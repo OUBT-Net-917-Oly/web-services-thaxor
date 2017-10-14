@@ -18,7 +18,7 @@ Assignment 1 - Work on the Simpsons Service and Web Page:
 	Add controls and methods for the new search methods above
 	
 
-Assignment 2 - Create Service and Page: 
+Assignment 2 - Create New Service and Page: 
 
  - In the service:
 	Add a new service, Like the Flintstones or Simpsons services already there, for your favorite show or sports team, or you can just add methods to Flintstones service.
