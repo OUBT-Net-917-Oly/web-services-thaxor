@@ -21,6 +21,7 @@ Assignement 1 - Create Service and Page:
 	
 - In the Website
 	Create a new show page for the new show you created the service for
+	Link to it from the index page
 	Add controls and methods for the new service and methods
 	If you are a sports freek you can add yards rushing or RBI's or some other stat and 
 	  make a method to bring back players with stats greater or less that a value the user can enter on the web form.  
