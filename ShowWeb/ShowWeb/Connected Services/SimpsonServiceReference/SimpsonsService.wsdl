@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="GetAllCharacters">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetAllCharactersResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAllCharactersResult" type="tns:ArrayOfCharacter" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfCharacter">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Character" nillable="true" type="tns:Character" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Character">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="FirstName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="LastName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Job" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="SearchByLastName">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="lastName" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SearchByLastNameResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SearchByLastNameResult" type="tns:ArrayOfCharacter" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Hello">
+        <s:complexType />
+      </s:element>
+      <s:element name="HelloResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="HelloResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="GetAllCharactersSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAllCharacters" />
+  </wsdl:message>
+  <wsdl:message name="GetAllCharactersSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAllCharactersResponse" />
+  </wsdl:message>
+  <wsdl:message name="SearchByLastNameSoapIn">
+    <wsdl:part name="parameters" element="tns:SearchByLastName" />
+  </wsdl:message>
+  <wsdl:message name="SearchByLastNameSoapOut">
+    <wsdl:part name="parameters" element="tns:SearchByLastNameResponse" />
+  </wsdl:message>
+  <wsdl:message name="HelloSoapIn">
+    <wsdl:part name="parameters" element="tns:Hello" />
+  </wsdl:message>
+  <wsdl:message name="HelloSoapOut">
+    <wsdl:part name="parameters" element="tns:HelloResponse" />
+  </wsdl:message>
+  <wsdl:portType name="SimpsonsServiceSoap">
+    <wsdl:operation name="GetAllCharacters">
+      <wsdl:input message="tns:GetAllCharactersSoapIn" />
+      <wsdl:output message="tns:GetAllCharactersSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SearchByLastName">
+      <wsdl:input message="tns:SearchByLastNameSoapIn" />
+      <wsdl:output message="tns:SearchByLastNameSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Hello">
+      <wsdl:input message="tns:HelloSoapIn" />
+      <wsdl:output message="tns:HelloSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="SimpsonsServiceSoap" type="tns:SimpsonsServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetAllCharacters">
+      <soap:operation soapAction="http://tempuri.org/GetAllCharacters" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SearchByLastName">
+      <soap:operation soapAction="http://tempuri.org/SearchByLastName" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Hello">
+      <soap:operation soapAction="http://tempuri.org/Hello" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="SimpsonsServiceSoap12" type="tns:SimpsonsServiceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetAllCharacters">
+      <soap12:operation soapAction="http://tempuri.org/GetAllCharacters" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SearchByLastName">
+      <soap12:operation soapAction="http://tempuri.org/SearchByLastName" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Hello">
+      <soap12:operation soapAction="http://tempuri.org/Hello" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="SimpsonsService">
+    <wsdl:port name="SimpsonsServiceSoap" binding="tns:SimpsonsServiceSoap">
+      <soap:address location="http://localhost:51730/SimpsonsService.asmx" />
+    </wsdl:port>
+    <wsdl:port name="SimpsonsServiceSoap12" binding="tns:SimpsonsServiceSoap12">
+      <soap12:address location="http://localhost:51730/SimpsonsService.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
