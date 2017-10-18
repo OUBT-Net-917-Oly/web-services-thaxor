@@ -55,26 +55,47 @@ namespace ShowService
         }
 
         [WebMethod]
-        public List<Character> SearchByFirstName(string lastName)
+        public List<Character> SearchByFirstName(string firstName)
         {
-            //implement this
-            //case insensitive
-            throw new NotImplementedException();
+            List<Character> matches;
+            matches = new List<Character>();
+
+            foreach (var person in People)
+            {
+                if (person.FirstName.ToLower().StartsWith(firstName.ToLower()))
+                {
+                    matches.Add(person);
+                }
+            }
+
+            return matches;
         }
 
         [WebMethod]
-        public List<Character> SearchByJob(string lastName)
+        public List<Character> SearchByJob(string job)
         {
-            //implement this
-            //case insensitive
-            throw new NotImplementedException();
+            List<Character> matches;
+            matches = new List<Character>();
+
+            foreach (var person in People)
+            {
+                if (person.Job.ToLower().StartsWith(job.ToLower()))
+                {
+                    matches.Add(person);
+                }
+            }
+
+            return matches;
         }
 
         [WebMethod]
         public int CountNumberOfCharacters()
         {
-            //implement this
-            throw new NotImplementedException();
+            if (People == null)
+            {
+                return 0;
+            }
+            return People.Count();
         }
 
         private void GetCharacters()
@@ -94,6 +115,20 @@ namespace ShowService
                 Job = "Mom"
             };
 
+            var bart = new Character
+            {
+                FirstName = "Bart",
+                LastName = "Simpson",
+                Job = "Student"
+            };
+
+            var lisa = new Character
+            {
+                FirstName = "Lisa",
+                LastName = "Simpson",
+                Job = "Student"
+            };
+
             var mo = new Character
             {
                 FirstName = "Moe",
@@ -108,10 +143,27 @@ namespace ShowService
                 Job = "Belcher"
             };
 
+            var nelson = new Character
+            {
+                FirstName = "Nelson",
+                LastName = "Muntz",
+                Job = "Bully"
+            };
+
+            var ralph = new Character
+            {
+                FirstName = "Ralph",
+                LastName = "Wiggum",
+                Job = "Student"
+            };
+
             People.Add(homer);
             People.Add(marge);
+            People.Add(bart);
+            People.Add(lisa);
             People.Add(mo);
             People.Add(barney);
+            People.Add(nelson);
         }
 
     }

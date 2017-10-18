@@ -2,6 +2,16 @@
 <wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
   <wsdl:types>
     <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="Hello">
+        <s:complexType />
+      </s:element>
+      <s:element name="HelloResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="HelloResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
       <s:element name="GetAllCharacters">
         <s:complexType />
       </s:element>
@@ -38,18 +48,52 @@
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:element name="Hello">
-        <s:complexType />
-      </s:element>
-      <s:element name="HelloResponse">
+      <s:element name="SearchByFirstName">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="HelloResult" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="firstName" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SearchByFirstNameResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SearchByFirstNameResult" type="tns:ArrayOfCharacter" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SearchByJob">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="job" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SearchByJobResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SearchByJobResult" type="tns:ArrayOfCharacter" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CountNumberOfCharacters">
+        <s:complexType />
+      </s:element>
+      <s:element name="CountNumberOfCharactersResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="CountNumberOfCharactersResult" type="s:int" />
           </s:sequence>
         </s:complexType>
       </s:element>
     </s:schema>
   </wsdl:types>
+  <wsdl:message name="HelloSoapIn">
+    <wsdl:part name="parameters" element="tns:Hello" />
+  </wsdl:message>
+  <wsdl:message name="HelloSoapOut">
+    <wsdl:part name="parameters" element="tns:HelloResponse" />
+  </wsdl:message>
   <wsdl:message name="GetAllCharactersSoapIn">
     <wsdl:part name="parameters" element="tns:GetAllCharacters" />
   </wsdl:message>
@@ -62,13 +106,29 @@
   <wsdl:message name="SearchByLastNameSoapOut">
     <wsdl:part name="parameters" element="tns:SearchByLastNameResponse" />
   </wsdl:message>
-  <wsdl:message name="HelloSoapIn">
-    <wsdl:part name="parameters" element="tns:Hello" />
+  <wsdl:message name="SearchByFirstNameSoapIn">
+    <wsdl:part name="parameters" element="tns:SearchByFirstName" />
   </wsdl:message>
-  <wsdl:message name="HelloSoapOut">
-    <wsdl:part name="parameters" element="tns:HelloResponse" />
+  <wsdl:message name="SearchByFirstNameSoapOut">
+    <wsdl:part name="parameters" element="tns:SearchByFirstNameResponse" />
+  </wsdl:message>
+  <wsdl:message name="SearchByJobSoapIn">
+    <wsdl:part name="parameters" element="tns:SearchByJob" />
+  </wsdl:message>
+  <wsdl:message name="SearchByJobSoapOut">
+    <wsdl:part name="parameters" element="tns:SearchByJobResponse" />
+  </wsdl:message>
+  <wsdl:message name="CountNumberOfCharactersSoapIn">
+    <wsdl:part name="parameters" element="tns:CountNumberOfCharacters" />
+  </wsdl:message>
+  <wsdl:message name="CountNumberOfCharactersSoapOut">
+    <wsdl:part name="parameters" element="tns:CountNumberOfCharactersResponse" />
   </wsdl:message>
   <wsdl:portType name="SimpsonsServiceSoap">
+    <wsdl:operation name="Hello">
+      <wsdl:input message="tns:HelloSoapIn" />
+      <wsdl:output message="tns:HelloSoapOut" />
+    </wsdl:operation>
     <wsdl:operation name="GetAllCharacters">
       <wsdl:input message="tns:GetAllCharactersSoapIn" />
       <wsdl:output message="tns:GetAllCharactersSoapOut" />
@@ -77,13 +137,30 @@
       <wsdl:input message="tns:SearchByLastNameSoapIn" />
       <wsdl:output message="tns:SearchByLastNameSoapOut" />
     </wsdl:operation>
-    <wsdl:operation name="Hello">
-      <wsdl:input message="tns:HelloSoapIn" />
-      <wsdl:output message="tns:HelloSoapOut" />
+    <wsdl:operation name="SearchByFirstName">
+      <wsdl:input message="tns:SearchByFirstNameSoapIn" />
+      <wsdl:output message="tns:SearchByFirstNameSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SearchByJob">
+      <wsdl:input message="tns:SearchByJobSoapIn" />
+      <wsdl:output message="tns:SearchByJobSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CountNumberOfCharacters">
+      <wsdl:input message="tns:CountNumberOfCharactersSoapIn" />
+      <wsdl:output message="tns:CountNumberOfCharactersSoapOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="SimpsonsServiceSoap" type="tns:SimpsonsServiceSoap">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Hello">
+      <soap:operation soapAction="http://tempuri.org/Hello" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="GetAllCharacters">
       <soap:operation soapAction="http://tempuri.org/GetAllCharacters" style="document" />
       <wsdl:input>
@@ -102,8 +179,26 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="Hello">
-      <soap:operation soapAction="http://tempuri.org/Hello" style="document" />
+    <wsdl:operation name="SearchByFirstName">
+      <soap:operation soapAction="http://tempuri.org/SearchByFirstName" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SearchByJob">
+      <soap:operation soapAction="http://tempuri.org/SearchByJob" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CountNumberOfCharacters">
+      <soap:operation soapAction="http://tempuri.org/CountNumberOfCharacters" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -114,6 +209,15 @@
   </wsdl:binding>
   <wsdl:binding name="SimpsonsServiceSoap12" type="tns:SimpsonsServiceSoap">
     <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Hello">
+      <soap12:operation soapAction="http://tempuri.org/Hello" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="GetAllCharacters">
       <soap12:operation soapAction="http://tempuri.org/GetAllCharacters" style="document" />
       <wsdl:input>
@@ -132,8 +236,26 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="Hello">
-      <soap12:operation soapAction="http://tempuri.org/Hello" style="document" />
+    <wsdl:operation name="SearchByFirstName">
+      <soap12:operation soapAction="http://tempuri.org/SearchByFirstName" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SearchByJob">
+      <soap12:operation soapAction="http://tempuri.org/SearchByJob" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CountNumberOfCharacters">
+      <soap12:operation soapAction="http://tempuri.org/CountNumberOfCharacters" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

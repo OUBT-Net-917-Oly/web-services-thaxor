@@ -94,6 +94,10 @@ namespace SimpsonsWeb.SimpsonServiceReference {
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="SimpsonServiceReference.SimpsonsServiceSoap")]
     public interface SimpsonsServiceSoap {
         
+        // CODEGEN: Generating message contract since element name HelloResult from namespace http://tempuri.org/ is not marked nillable
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/Hello", ReplyAction="*")]
+        SimpsonsWeb.SimpsonServiceReference.HelloResponse Hello(SimpsonsWeb.SimpsonServiceReference.HelloRequest request);
+        
         // CODEGEN: Generating message contract since element name GetAllCharactersResult from namespace http://tempuri.org/ is not marked nillable
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/GetAllCharacters", ReplyAction="*")]
         SimpsonsWeb.SimpsonServiceReference.GetAllCharactersResponse GetAllCharacters(SimpsonsWeb.SimpsonServiceReference.GetAllCharactersRequest request);
@@ -102,9 +106,77 @@ namespace SimpsonsWeb.SimpsonServiceReference {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/SearchByLastName", ReplyAction="*")]
         SimpsonsWeb.SimpsonServiceReference.SearchByLastNameResponse SearchByLastName(SimpsonsWeb.SimpsonServiceReference.SearchByLastNameRequest request);
         
-        // CODEGEN: Generating message contract since element name HelloResult from namespace http://tempuri.org/ is not marked nillable
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/Hello", ReplyAction="*")]
-        SimpsonsWeb.SimpsonServiceReference.HelloResponse Hello(SimpsonsWeb.SimpsonServiceReference.HelloRequest request);
+        // CODEGEN: Generating message contract since element name firstName from namespace http://tempuri.org/ is not marked nillable
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/SearchByFirstName", ReplyAction="*")]
+        SimpsonsWeb.SimpsonServiceReference.SearchByFirstNameResponse SearchByFirstName(SimpsonsWeb.SimpsonServiceReference.SearchByFirstNameRequest request);
+        
+        // CODEGEN: Generating message contract since element name job from namespace http://tempuri.org/ is not marked nillable
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/SearchByJob", ReplyAction="*")]
+        SimpsonsWeb.SimpsonServiceReference.SearchByJobResponse SearchByJob(SimpsonsWeb.SimpsonServiceReference.SearchByJobRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/CountNumberOfCharacters", ReplyAction="*")]
+        int CountNumberOfCharacters();
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class HelloRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="Hello", Namespace="http://tempuri.org/", Order=0)]
+        public SimpsonsWeb.SimpsonServiceReference.HelloRequestBody Body;
+        
+        public HelloRequest() {
+        }
+        
+        public HelloRequest(SimpsonsWeb.SimpsonServiceReference.HelloRequestBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute()]
+    public partial class HelloRequestBody {
+        
+        public HelloRequestBody() {
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class HelloResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="HelloResponse", Namespace="http://tempuri.org/", Order=0)]
+        public SimpsonsWeb.SimpsonServiceReference.HelloResponseBody Body;
+        
+        public HelloResponse() {
+        }
+        
+        public HelloResponse(SimpsonsWeb.SimpsonServiceReference.HelloResponseBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class HelloResponseBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public string HelloResult;
+        
+        public HelloResponseBody() {
+        }
+        
+        public HelloResponseBody(string HelloResult) {
+            this.HelloResult = HelloResult;
+        }
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
@@ -240,42 +312,15 @@ namespace SimpsonsWeb.SimpsonServiceReference {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
-    public partial class HelloRequest {
+    public partial class SearchByFirstNameRequest {
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Name="Hello", Namespace="http://tempuri.org/", Order=0)]
-        public SimpsonsWeb.SimpsonServiceReference.HelloRequestBody Body;
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="SearchByFirstName", Namespace="http://tempuri.org/", Order=0)]
+        public SimpsonsWeb.SimpsonServiceReference.SearchByFirstNameRequestBody Body;
         
-        public HelloRequest() {
+        public SearchByFirstNameRequest() {
         }
         
-        public HelloRequest(SimpsonsWeb.SimpsonServiceReference.HelloRequestBody Body) {
-            this.Body = Body;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.Runtime.Serialization.DataContractAttribute()]
-    public partial class HelloRequestBody {
-        
-        public HelloRequestBody() {
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
-    public partial class HelloResponse {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Name="HelloResponse", Namespace="http://tempuri.org/", Order=0)]
-        public SimpsonsWeb.SimpsonServiceReference.HelloResponseBody Body;
-        
-        public HelloResponse() {
-        }
-        
-        public HelloResponse(SimpsonsWeb.SimpsonServiceReference.HelloResponseBody Body) {
+        public SearchByFirstNameRequest(SimpsonsWeb.SimpsonServiceReference.SearchByFirstNameRequestBody Body) {
             this.Body = Body;
         }
     }
@@ -284,16 +329,118 @@ namespace SimpsonsWeb.SimpsonServiceReference {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
-    public partial class HelloResponseBody {
+    public partial class SearchByFirstNameRequestBody {
         
         [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
-        public string HelloResult;
+        public string firstName;
         
-        public HelloResponseBody() {
+        public SearchByFirstNameRequestBody() {
         }
         
-        public HelloResponseBody(string HelloResult) {
-            this.HelloResult = HelloResult;
+        public SearchByFirstNameRequestBody(string firstName) {
+            this.firstName = firstName;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class SearchByFirstNameResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="SearchByFirstNameResponse", Namespace="http://tempuri.org/", Order=0)]
+        public SimpsonsWeb.SimpsonServiceReference.SearchByFirstNameResponseBody Body;
+        
+        public SearchByFirstNameResponse() {
+        }
+        
+        public SearchByFirstNameResponse(SimpsonsWeb.SimpsonServiceReference.SearchByFirstNameResponseBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class SearchByFirstNameResponseBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public SimpsonsWeb.SimpsonServiceReference.Character[] SearchByFirstNameResult;
+        
+        public SearchByFirstNameResponseBody() {
+        }
+        
+        public SearchByFirstNameResponseBody(SimpsonsWeb.SimpsonServiceReference.Character[] SearchByFirstNameResult) {
+            this.SearchByFirstNameResult = SearchByFirstNameResult;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class SearchByJobRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="SearchByJob", Namespace="http://tempuri.org/", Order=0)]
+        public SimpsonsWeb.SimpsonServiceReference.SearchByJobRequestBody Body;
+        
+        public SearchByJobRequest() {
+        }
+        
+        public SearchByJobRequest(SimpsonsWeb.SimpsonServiceReference.SearchByJobRequestBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class SearchByJobRequestBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public string job;
+        
+        public SearchByJobRequestBody() {
+        }
+        
+        public SearchByJobRequestBody(string job) {
+            this.job = job;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class SearchByJobResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="SearchByJobResponse", Namespace="http://tempuri.org/", Order=0)]
+        public SimpsonsWeb.SimpsonServiceReference.SearchByJobResponseBody Body;
+        
+        public SearchByJobResponse() {
+        }
+        
+        public SearchByJobResponse(SimpsonsWeb.SimpsonServiceReference.SearchByJobResponseBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class SearchByJobResponseBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public SimpsonsWeb.SimpsonServiceReference.Character[] SearchByJobResult;
+        
+        public SearchByJobResponseBody() {
+        }
+        
+        public SearchByJobResponseBody(SimpsonsWeb.SimpsonServiceReference.Character[] SearchByJobResult) {
+            this.SearchByJobResult = SearchByJobResult;
         }
     }
     
@@ -325,6 +472,18 @@ namespace SimpsonsWeb.SimpsonServiceReference {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        SimpsonsWeb.SimpsonServiceReference.HelloResponse SimpsonsWeb.SimpsonServiceReference.SimpsonsServiceSoap.Hello(SimpsonsWeb.SimpsonServiceReference.HelloRequest request) {
+            return base.Channel.Hello(request);
+        }
+        
+        public string Hello() {
+            SimpsonsWeb.SimpsonServiceReference.HelloRequest inValue = new SimpsonsWeb.SimpsonServiceReference.HelloRequest();
+            inValue.Body = new SimpsonsWeb.SimpsonServiceReference.HelloRequestBody();
+            SimpsonsWeb.SimpsonServiceReference.HelloResponse retVal = ((SimpsonsWeb.SimpsonServiceReference.SimpsonsServiceSoap)(this)).Hello(inValue);
+            return retVal.Body.HelloResult;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
         SimpsonsWeb.SimpsonServiceReference.GetAllCharactersResponse SimpsonsWeb.SimpsonServiceReference.SimpsonsServiceSoap.GetAllCharacters(SimpsonsWeb.SimpsonServiceReference.GetAllCharactersRequest request) {
             return base.Channel.GetAllCharacters(request);
         }
@@ -350,15 +509,33 @@ namespace SimpsonsWeb.SimpsonServiceReference {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        SimpsonsWeb.SimpsonServiceReference.HelloResponse SimpsonsWeb.SimpsonServiceReference.SimpsonsServiceSoap.Hello(SimpsonsWeb.SimpsonServiceReference.HelloRequest request) {
-            return base.Channel.Hello(request);
+        SimpsonsWeb.SimpsonServiceReference.SearchByFirstNameResponse SimpsonsWeb.SimpsonServiceReference.SimpsonsServiceSoap.SearchByFirstName(SimpsonsWeb.SimpsonServiceReference.SearchByFirstNameRequest request) {
+            return base.Channel.SearchByFirstName(request);
         }
         
-        public string Hello() {
-            SimpsonsWeb.SimpsonServiceReference.HelloRequest inValue = new SimpsonsWeb.SimpsonServiceReference.HelloRequest();
-            inValue.Body = new SimpsonsWeb.SimpsonServiceReference.HelloRequestBody();
-            SimpsonsWeb.SimpsonServiceReference.HelloResponse retVal = ((SimpsonsWeb.SimpsonServiceReference.SimpsonsServiceSoap)(this)).Hello(inValue);
-            return retVal.Body.HelloResult;
+        public SimpsonsWeb.SimpsonServiceReference.Character[] SearchByFirstName(string firstName) {
+            SimpsonsWeb.SimpsonServiceReference.SearchByFirstNameRequest inValue = new SimpsonsWeb.SimpsonServiceReference.SearchByFirstNameRequest();
+            inValue.Body = new SimpsonsWeb.SimpsonServiceReference.SearchByFirstNameRequestBody();
+            inValue.Body.firstName = firstName;
+            SimpsonsWeb.SimpsonServiceReference.SearchByFirstNameResponse retVal = ((SimpsonsWeb.SimpsonServiceReference.SimpsonsServiceSoap)(this)).SearchByFirstName(inValue);
+            return retVal.Body.SearchByFirstNameResult;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        SimpsonsWeb.SimpsonServiceReference.SearchByJobResponse SimpsonsWeb.SimpsonServiceReference.SimpsonsServiceSoap.SearchByJob(SimpsonsWeb.SimpsonServiceReference.SearchByJobRequest request) {
+            return base.Channel.SearchByJob(request);
+        }
+        
+        public SimpsonsWeb.SimpsonServiceReference.Character[] SearchByJob(string job) {
+            SimpsonsWeb.SimpsonServiceReference.SearchByJobRequest inValue = new SimpsonsWeb.SimpsonServiceReference.SearchByJobRequest();
+            inValue.Body = new SimpsonsWeb.SimpsonServiceReference.SearchByJobRequestBody();
+            inValue.Body.job = job;
+            SimpsonsWeb.SimpsonServiceReference.SearchByJobResponse retVal = ((SimpsonsWeb.SimpsonServiceReference.SimpsonsServiceSoap)(this)).SearchByJob(inValue);
+            return retVal.Body.SearchByJobResult;
+        }
+        
+        public int CountNumberOfCharacters() {
+            return base.Channel.CountNumberOfCharacters();
         }
     }
 }

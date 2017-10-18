@@ -26,6 +26,19 @@
         </div>
         <br />
         <br />
+        <div>
+            FirstName: <asp:TextBox ID="txtFirstName" runat="server"></asp:TextBox><br />
+            <asp:Button ID="btnFindByFirst" runat="server" Text="Find by First Name" OnClick="btnFindByFirst_Click" /> <br />
+            <asp:Label ID="lblFirstMatch" runat="server" Text=""></asp:Label>
+        </div>
+        <br />
+        <br />
+        <div>
+            <asp:Button ID="btnCountCharacters" runat="server" Text="Count characters" OnClick="btnCountCharacters_Click" />
+            <asp:Label ID="lblCharacterCount" runat="server" Text=""></asp:Label>
+        </div>
+        <br />
+        <br />
     </form>
 </body>
 </html>

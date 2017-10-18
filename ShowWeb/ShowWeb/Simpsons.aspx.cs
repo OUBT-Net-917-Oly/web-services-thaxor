@@ -60,5 +60,24 @@ namespace SimpsonsWeb
 
             lblLastMatch.Text = names;
         }
+
+        protected void btnFindByFirst_Click(object sender, EventArgs e)
+        {
+            List<Character> characters = _service.SearchByFirstName(txtFirstName.Text).ToList();
+
+            string names = "";
+
+            foreach (var character in characters)
+            {
+                names = names + $"{character.FirstName} {character.LastName} <br>";
+            }
+
+            lblFirstMatch.Text = names;
+        }
+
+        protected void btnCountCharacters_Click(object sender, EventArgs e)
+        {
+            lblCharacterCount.Text = _service.CountNumberOfCharacters().ToString();
+        }
     }
 }
